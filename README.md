@@ -35,7 +35,7 @@ The key questions addressed:
 
 - Where can safety stock be reduced without hurting service levels?
 
-- How can inventory decisions directly improve casg flow and profitability?
+- How can inventory decisions directly improve cash flow and profitability?
 
 # Solution Approach
 
