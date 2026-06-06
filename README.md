@@ -1,156 +1,147 @@
 # Optimising Inventory and Reducing Stock-Outs Using ABC-XYZ and Demand Planning
+### Inventory Classification · Safety Stock Modelling · Working Capital Analysis
+### SQL (PostgreSQL) · Python · Power BI · ABC-XYZ · Reorder Point Optimisation
 
-# Overview
-This project demonstrates how sales and demand-driven inventory analytics can reduce holding costs, prevent stock-outs, and improve cash flow for retail businesses,
+---
 
-Using **SQL, Python, and Power BI,** I built an end-to-end inventory optimisation framework that identifies:
+## Overview
 
-- Cash trapped in excess inventory
+This project builds an end-to-end inventory optimisation framework 
+for a multi-category retail business - identifying cash trapped in 
+excess inventory, revenue lost to stock-outs, and the optimal 
+replenishment logic to balance service levels against holding costs.
 
-- Revenue lost due to stock-outs
+Using the publicly available Maven Superstore dataset, I applied 
+ABC-XYZ segmentation, safety stock modelling, and reorder point 
+calculations to surface the working capital and profit optimisation 
+case for a full inventory strategy overhaul.
 
-- Products that truly drive profitability
+**Tools:** SQL (PostgreSQL) · Python (Pandas, NumPy) · Power BI · 
+ABC-XYZ Analysis · Safety Stock Modelling · Feature Engineering
 
-- Optimal safety stock and reorder levels
+---
 
-The approach mirrors real-world retail challenges faced by supermarkets, D2C brands, and multi-category retailers.
+## Business Problem
 
-# Business Problem
+Retail businesses consistently face the same inventory paradox: 
+too much of the wrong stock and not enough of the right stock - 
+simultaneously.
 
-Retail businesses often struggle with:
+Key questions this project addresses:
 
-- Excess inventory tying up working capital
-
-- Frequent stock-outs on high-value products
-
-- Poor visibility into which SKUs actually drive profit
-
-- High holding and return costs eroding margins
-
-The key questions addressed:
-
-- Which products are cash traps vs. profit drivers?
-
-- How much revenue is lost due to stock-outs?
-
+- Which SKUs are cash traps vs. genuine profit drivers?
+- How much revenue is being lost to stock-outs on high-value products?
 - Where can safety stock be reduced without hurting service levels?
+- How can replenishment decisions be made systematically 
+  rather than reactively?
 
-- How can inventory decisions directly improve cash flow and profitability?
+---
 
-# Solution Approach
+## Analytical Approach
 
-I designed a data-driven inventory planning framework using retail transaction data:
-
-**🔹 Inventory Classification**
-
-- ABC analysis by revenue and cost
+**Inventory Classification: ABC-XYZ Matrix**
+- ABC analysis by revenue and cost contribution
 - XYZ analysis based on demand variability
-- ABC-XYZ 9-box matrix to prioritise replenishment decisions
+- Combined ABC-XYZ 9-box matrix to prioritise 
+  replenishment decisions by segment
 
-**🔹 Replenishment and Risk Modeling**
+**Replenishment & Risk Modelling**
+- Safety stock calculations by SKU using demand variability
+- Reorder point modelling based on lead-time demand
+- Fill-rate and service-level evaluation by category
 
-- Safety stock and reorder point calculations
-- Lead-time demand analysis
-- Fill-rate and service-level evaluation
+**Inventory Health & Leakage Analysis**
+- Excess, slow-moving, and dead stock identification
+- Stock-out days and lost sales estimation by category
+- Inventory turnover and days-of-supply analysis
+- Return-rate analysis by product category
 
-**🔹 Inventory Health and Leakage Analysis**
+**Executive Reporting**
+- Power BI dashboard translating inventory analytics 
+  into operational decisions for business teams
 
- - Excess, slow-moving, and dead stock identification
- - Stock-out days and lost sales estimation
- - Inventory turnover and days-of-supply analysis
- - Return-rate analysis by category
+---
 
-**🔹 Executive Reporting**
+## Key Findings
 
-- Built a Power BI dashboard translating analytics into actionable business insights
+**~98% of SKUs classified as slow-moving or dead stock**
+ABC-XYZ segmentation revealed that the vast majority of SKUs 
+contributed negligible revenue while consuming inventory capital. 
+A small AX segment (high revenue, low variability) drove most 
+of the commercial value - meaning replenishment priority and 
+working capital should be heavily concentrated in this segment.
 
-# Key Business Insights and Impact
+**Technology category identified as highest stock-out risk**
+Stock-out analysis revealed the Technology category had the 
+most significant lost-sales exposure due to inadequate safety 
+stock relative to demand variability. This is the highest-impact 
+category for immediate replenishment policy change.
 
-*(Estimated financial impact scaled to large retail operations)*
+**Excess and aged inventory concentrated in identifiable SKUs**
+Dead stock and slow-moving inventory were not evenly distributed - 
+they clustered in specific categories and SKUs that can be 
+systematically targeted for clearance or discontinuation, 
+freeing working capital without broad policy changes.
 
-- 98% of SKUs were slow or dead stock, while a small AX segment drove most revenue
-  → Prioritizing AX items could free $10–25M in working capital
+**Top 10 products drive disproportionate profit contribution**
+Pareto analysis confirmed heavy revenue and profit concentration 
+in a small number of SKUs - creating both a zero-stockout 
+imperative for those items and a rationalisation opportunity 
+for the long tail.
 
-- Technology category lost $15-30M in sales due to stock-outs
-  → Adjusting safety stock recovered $10-20M in revenue
+---
 
-- Excess and aged inventory worth $10-25M identified
-  → Clearance and discontinuation enabled #3-10M cash recovery
+## Modelled Business Impact
 
-- Top 10 products generated 30-40% of total profit
-  → Ensuring zero stock-outs drove 20-30% profit growth
+*Financial impacts are modelled estimates based on the public 
+Maven Superstore dataset, scaled using industry benchmarks 
+to reflect real-world retail economics.*
 
-- Annual holding costs estimated at $20-45M
-  → Reducing excess inventory saved $5-15M annually
+| Finding | Modelled Impact |
+|---|---|
+| ~98% slow/dead stock - AX segment prioritisation | ~$10M+ working capital release potential |
+| Technology category stock-out losses | ~$15M+ in modelled lost revenue |
+| Excess and aged inventory identified | ~$10M+ cash recovery via clearance |
+| Holding cost reduction from inventory rationalisation | ~$5M+ annual saving potential |
 
-# Strategic Recommendations
+---
 
-- Implement ABC-XYZ classification for weekly inventory reviews
+## Strategic Recommendations
 
-- Protect high-value AX products with higher service levels
+- Implement ABC-XYZ classification as the foundation 
+  for all weekly inventory review decisions
+- Protect AX products with higher service levels and 
+  dedicated safety stock buffers
+- Reduce safety stock on CZ/BZ SKUs where demand 
+  variability is low and revenue contribution is minimal
+- Run quarterly clearance cycles targeting dead and 
+  slow-moving stock to recover working capital
+- Integrate reorder point alerts and safety stock 
+  thresholds into ERP or inventory management systems
+- Monitor inventory health weekly via Power BI dashboard - 
+  turnover, days of supply, stock-out risk by category
 
-- Reduce safety stock on low-risk, low-velocity SKUs
+---
 
-- Run quarterly clearance cycles for slow and dead stock
+## Tools & Technologies
 
-- Integrate safety stock and reorder alerts into ERP systems
+| Tool | Usage |
+|---|---|
+| SQL (PostgreSQL) | ABC-XYZ classification, stock-out analysis, inventory metrics |
+| Python (Pandas, NumPy) | Safety stock modelling, reorder point calculations, EDA |
+| Power BI | Executive inventory health dashboard |
+| Feature Engineering | Star schema, demand variability scoring, synthetic assumptions |
 
-- Use Power BI dashboards for ongoing executive monitoring
+---
 
-# Tools and Technologies
+## Dataset Note
 
-- Python (Pandas, NumPy)
+This analysis uses the publicly available Maven Superstore dataset. 
+All financial impacts are modelled estimates - not real business 
+outcomes. The methodology and framework directly reflect real-world 
+retail inventory analytics practice.
 
-- PostgreSQL (Supabase)
+---
 
-- SQL (window functions, percentiles, aggregations)
-
-- Power BI
-
-- Data Engineering: Star schema, feature engineering, synthetic assumptions
-
-# Why this Matters for Your Business
-
-This project shows how inventory analytics can:
-
-- Free trapped cash
-
-- Reduce operational risk
-
-- Recover lost revenue
-
-- Turn inventory from a cost center into a profit driver
-
-The same framework can be adapted for:
-
-- Retail chains
-
-- E-Commerce Platforms
-
-- D2C brands
-
-- Multi-warehouse operations
-
-# 📌 Note
-This analysis uses the publicly available Maven Superstore dataset. Financial impacts are estimated using industry-standard benchmarks to reflect real-world retail scale.
-
-# 💬 How this helps you as a client
-If you are facing:
-
-- Overstocking
-
-- Stock-outs
-
-- Poor inventory visibility
-
-- Margin pressure
-
-I can adapt this approach to your real data and deliver:
-
-- SQL models
-
-- Python analysis
-
-- Power BI dashboards
-
-- Clear, actionable recommendations
+*Part of the E-Commerce & Supply Chain Analytics Portfolio*
+*[View full portfolio](https://aarushijain16.github.io/sales-demand-customer-growth-portfolio/)*
